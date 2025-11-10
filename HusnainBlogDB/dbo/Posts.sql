@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[Posts]
+(
+    [Id] INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    [Title] NVARCHAR(200) NOT NULL,
+    [Content] NVARCHAR(MAX) NOT NULL,
+    [UserId] INT NOT NULL,
+    [CreatedAt] DATETIME2 NOT NULL DEFAULT SYSUTCDATETIME()
+);
+GO
+ALTER TABLE [dbo].[Posts]
+ADD CONSTRAINT FK_Posts_Users FOREIGN KEY (UserId) REFERENCES [dbo].[Users](Id);
